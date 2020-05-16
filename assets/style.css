@@ -1,0 +1,14 @@
+#reservation {
+  border: 1px solid gray;
+}
+
+#header {
+  background-color: lightgray;
+  border-bottom: 1px solid gray;
+  padding: 10px;
+}
+
+form {
+  margin-bottom: 10px;
+  margin-top: 5px;
+}
