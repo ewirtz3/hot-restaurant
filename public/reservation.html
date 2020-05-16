@@ -14,6 +14,7 @@
       src="https://kit.fontawesome.com/de03f8749b.js"
       crossorigin="anonymous"
     ></script>
+    <script src="https://code.jquery.com/jquery.js"></script>
     <link
       rel="stylesheet"
       href="../assets/style.css"
@@ -27,12 +28,12 @@
         <h1 class="display-4"><i class="fas fa-fire"></i>Hot Restaurant</h1>
         <hr />
         <p class="lead">Make your reservation</p>
-        <button type="button" class="btn btn-info">
-          <i class="far fa-list-alt"></i>View Tables
-        </button>
-        <button type="button" class="btn btn-light">
-          <i class="fas fa-home"></i>
-        </button>
+        <a href="./view.html"><button type="button" class="btn btn-info">
+          <i class="far fa-list-alt"></i>View Tables</button></a>
+        
+        <a href="./home.html"><button type="button" class="btn btn-light">
+          <i class="fas fa-home"></i></button></a>
+        
       </div>
     </div>
     <div class="container" id="reservation">
@@ -54,8 +55,24 @@
           <label for="id">Unique ID</label>
           <input type="id" class="form-control" id="id" />
         </div>
-        <button type="button" class="btn btn-info">Submit</button>
+        <button type="button" class="btn btn-info" id="submit-btn">Submit</button>
       </form>
     </div>
+
+    <script type="text/javascript">
+    $("#submit-btn").on("click", function(event){
+      event.preventDefault();
+      var newPatron = {
+        name: $("#name").val().trim(),
+        phone: $("#phone").val().trim(),
+        email: $("#email").val().trim(),
+        uniqueID: $("#id").val().trim()
+      };
+
+      $.post("/api/reservation", newPatron).then(function(data){
+        alert("Yay! You are officially booked!")
+      });
+    });
+    </script>
   </body>
 </html>
